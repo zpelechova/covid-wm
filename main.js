@@ -36,10 +36,10 @@ Apify.main(async () => {
         return data;
     });
     console.log(result)
-    if (!result.country) {
-        check = true;
-    }
-    else {
+//    if (!result.country) {
+//        check = true;
+//    }
+//    else {
         let latest = await kvStore.getValue(LATEST);
         if (!latest) {
             await kvStore.setValue('LATEST', result);
@@ -51,7 +51,7 @@ Apify.main(async () => {
 
         if (JSON.stringify(latest) !== JSON.stringify(actual)) {
             await dataset.pushData(result);
-        }
+  //      }
 
         await kvStore.setValue('LATEST', result);
         await Apify.pushData(result);
